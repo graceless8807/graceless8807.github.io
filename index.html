@@ -1,136 +1,153 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" >
 <head>
-<meta charset="UTF-8" />
-<title>Hasan's Art Projects</title>
-<style>
-  body {
-    background: #111;
-    color: white;
-    font-family: sans-serif;
-    padding: 40px;
-    max-width: 900px;
-    margin: auto;
-  }
-  h1 {
-    text-align: center;
-    margin-bottom: 40px;
-  }
-  .projects {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 30px;
-    justify-content: center;
-  }
-  .project {
-    background: #222;
-    border-radius: 12px;
-    padding: 15px;
-    width: 280px;
-    box-sizing: border-box;
-  }
-  .project h2 {
-    margin: 0 0 12px 0;
-    font-size: 1.2rem;
-    text-align: center;
-  }
-  .single-image img {
-    width: 100%;
-    border-radius: 10px;
-    border: 2px solid #444;
-    display: block;
-  }
-  .slideshow-container {
-    position: relative;
-    width: 100%;
-    overflow: hidden;
-    border-radius: 10px;
-    border: 2px solid #444;
-  }
-  .slides {
-    display: flex;
-    transition: transform 0.3s ease-in-out;
-  }
-  .slides img {
-    width: 100%;
-    flex-shrink: 0;
-    user-select: none;
-    pointer-events: none;
-  }
-  .arrow {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background: rgba(0,0,0,0.6);
-    color: white;
-    font-size: 24px;
-    padding: 8px 14px;
-    cursor: pointer;
-    border-radius: 50%;
-    user-select: none;
-  }
-  .arrow.left {
-    left: 8px;
-  }
-  .arrow.right {
-    right: 8px;
-  }
-</style>
+  <meta charset="UTF-8" />
+  <title>Simple Art Gallery</title>
+  <style>
+    body {
+      background: #111;
+      margin: 40px auto;
+      max-width: 900px;
+      font-family: sans-serif;
+      color: white;
+      text-align: center;
+    }
+
+    h1 {
+      margin-bottom: 30px;
+    }
+
+    .gallery {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      justify-content: center;
+    }
+
+    .gallery a {
+      display: block;
+      max-width: 280px;
+      border-radius: 8px;
+      overflow: hidden;
+      cursor: pointer;
+      text-decoration: none;
+    }
+
+    .gallery img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border: 2px solid #444;
+      border-radius: 8px;
+      transition: border-color 0.3s ease;
+    }
+
+    .gallery img:hover {
+      border-color: #eee;
+    }
+
+    /* slideshow styles for projects with multiple images */
+    .slideshow-container {
+      position: relative;
+      max-width: 280px;
+      margin: auto;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .slides {
+      display: flex;
+      transition: transform 0.3s ease-in-out;
+    }
+
+    .slides img {
+      width: 100%;
+      flex-shrink: 0;
+      user-select: none;
+      pointer-events: none;
+      border: 2px solid #444;
+      border-radius: 8px;
+    }
+
+    .arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(0,0,0,0.6);
+      color: white;
+      font-size: 24px;
+      padding: 8px 14px;
+      cursor: pointer;
+      border-radius: 50%;
+      user-select: none;
+      z-index: 10;
+    }
+
+    .arrow.left {
+      left: 8px;
+    }
+
+    .arrow.right {
+      right: 8px;
+    }
+
+  </style>
 </head>
 <body>
 
-<h1>My Art Projects</h1>
+  <h1>My Art Gallery</h1>
 
-<div class="projects">
+  <div class="gallery">
 
-  <!-- Project 1: single image -->
-  <div class="project">
-    <h2>Project One</h2>
-    <div class="single-image">
-      <img src="img/s6efzsizpf4e1.jpeg" alt="Submerged Classroom" />
-    </div>
-  </div>
+    <!-- Single image: clicking opens full image -->
+    <a href="img/project1.jpg" target="_blank" title="Project 1">
+      <img src="img/project1.jpg" alt="Project 1" />
+    </a>
 
-  <!-- Project 2: slideshow -->
-  <div class="project">
-    <h2>Project Two</h2>
+    <!-- Project with multiple images slideshow -->
     <div class="slideshow-container" data-slideshow-id="2">
       <div class="slides">
-        <img src="img/project2-1.jpg" alt="Project Two Image 1" />
-        <img src="img/project2-2.jpg" alt="Project Two Image 2" />
-        <img src="img/project2-3.jpg" alt="Project Two Image 3" />
+        <img src="img/project2-1.jpg" alt="Project 2 Image 1" />
+        <img src="img/project2-2.jpg" alt="Project 2 Image 2" />
+        <img src="img/project2-3.jpg" alt="Project 2 Image 3" />
       </div>
       <div class="arrow left" onclick="changeSlide('2', -1)">❮</div>
       <div class="arrow right" onclick="changeSlide('2', 1)">❯</div>
     </div>
+
+    <!-- Another single image -->
+    <a href="img/project3.jpg" target="_blank" title="Project 3">
+      <img src="img/project3.jpg" alt="Project 3" />
+    </a>
+
   </div>
 
-  <!-- Project 3: slideshow -->
-  <div class="project">
-    <h2>Project Three</h2>
-    <div class="slideshow-container" data-slideshow-id="3">
-      <div class="slides">
-        <img src="img/project3-1.jpg" alt="Project Three Image 1" />
-        <img src="img/project3-2.jpg" alt="Project Three Image 2" />
-      </div>
-      <div class="arrow left" onclick="changeSlide('3', -1)">❮</div>
-      <div class="arrow right" onclick="changeSlide('3', 1)">❯</div>
-    </div>
-  </div>
+  <script>
+    const slideIndices = {};
 
-</div>
+    function changeSlide(slideshowId, direction) {
+      if (!(slideshowId in slideIndices)) {
+        slideIndices[slideshowId] = 0;
+      }
+      const container = document.querySelector(`.slideshow-container[data-slideshow-id="${slideshowId}"]`);
+      const slides = container.querySelector('.slides');
+      const imagesCount = slides.children.length;
 
-<script>
-  const slideIndices = {};
+      slideIndices[slideshowId] += direction;
 
-  function changeSlide(slideshowId, direction) {
-    if (!(slideshowId in slideIndices)) {
-      slideIndices[slideshowId] = 0;
+      if (slideIndices[slideshowId] >= imagesCount) slideIndices[slideshowId] = 0;
+      if (slideIndices[slideshowId] < 0) slideIndices[slideshowId] = imagesCount -1;
+
+      const slideWidth = slides.children[0].clientWidth;
+      slides.style.transform = `translateX(-${slideIndices[slideshowId] * slideWidth}px)`;
     }
-    const container = document.querySelector(`.slideshow-container[data-slideshow-id="${slideshowId}"]`);
-    const slides = container.querySelector('.slides');
-    const imagesCount = slides.children.length;
 
-    slideIndices[slideshowId] += direction;
+    // initialize all slideshows at 0th slide
+    document.querySelectorAll('.slideshow-container').forEach(container => {
+      const id = container.getAttribute('data-slideshow-id');
+      slideIndices[id] = 0;
+    });
+  </script>
 
-    if (slideIndices[slideshowId] >= imagesCount) slideIndices[slideshow]()
+</body>
+</html>
